@@ -1,4 +1,17 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-console.log("Chat is running");
+const express_1 = __importDefault(require("express"));
+const app = (0, express_1.default)();
+app.get("/", (req, res) => {
+    res.send("Chat server is running");
+});
+app.get("/health", (req, res) => {
+    res.json({ Status: "ok" });
+});
+app.listen(3000, () => {
+    console.log("Server running at http://localhost:3000");
+});
 //# sourceMappingURL=index.js.map
