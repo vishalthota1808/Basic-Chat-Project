@@ -1,0 +1,26 @@
+{
+  "name": "chat-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishalthota1808/Basic-Chat-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/vishalthota1808/Basic-Chat-Project/issues"
+  },
+  "homepage": "https://github.com/vishalthota1808/Basic-Chat-Project#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
