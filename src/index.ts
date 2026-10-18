@@ -1,6 +1,6 @@
 import express from "express";
-import http from "http"
-import { WebSocketServer, type WebSocket } from "ws";
+import http from "http";
+import { WebSocket, WebSocketServer } from "ws";
 
 const app = express(); //Just an express Application, which defines routes and handles HTTP requests
 
@@ -12,19 +12,26 @@ app.get("/", (req, res) => {
 });
 
 const server = http.createServer(app);
-const PORT = process.env.PORT?? 3000
+const PORT = process.env.PORT ?? 3000;
 
-const wss = new WebSocketServer({server, path: "/ws"}) //The server option is specifically how ws shares the same HTTP server as Express; path restricts which URL path performs the WebSocket upgrade
+const wss = new WebSocketServer({ server, path: "/ws" }); //The server option is specifically how ws shares the same HTTP server as Express; path restricts which URL path performs the WebSocket upgrade
 
 wss.on("connection", (socket: WebSocket) => {
-  console.log("WebSocket connected success!!")
+  console.log("WebSocket connected success!!");
 
-  socket.on("message", (data)=> {
-    console.log(data.toString());
-  })
+  socket.on("message", (data) => {
+    //here socket represents the client
+    if(data.toString().trim() === ""){
+      console.log("Invalid Message from client");
+      return;
+    }
+    wss.clients.forEach((client) => {
+      if (client != socket && client.readyState === WebSocket.OPEN) client.send(data);
+    });
+  });
 
-  socket.send("This is from Server...")
-})
+  // socket.send("This is from Server...")
+});
 
 app.get("/health", (req, res) => {
   res.json({ Status: "ok" });
@@ -55,4 +62,4 @@ app.post("/messages", (req, res) => {
 // });
 server.listen(PORT, () => {
   console.log("Server is running at http://localhost:3000");
-})
+});
