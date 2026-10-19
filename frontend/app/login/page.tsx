@@ -9,12 +9,15 @@ export default function LoginPage() {
   return (
     <AuthShell
       title="Welcome back"
-      description="Sign in to continue your conversations."
+      description="Sign in to your account"
       footer={
         <>
-          {'New to Hush? '}
-          <Link href="/register" className="font-medium text-foreground underline-offset-4 hover:underline">
-            Create an account
+          {"Don't have an account? "}
+          <Link
+            href="/register"
+            className="font-medium text-white transition-colors underline-offset-4 hover:underline"
+          >
+            Create one
           </Link>
         </>
       }

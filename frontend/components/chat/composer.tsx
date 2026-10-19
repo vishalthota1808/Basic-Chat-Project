@@ -2,7 +2,6 @@
 
 import { CircleAlert, SendHorizontal } from 'lucide-react'
 import { useRef, useState } from 'react'
-import { Button } from '@/components/ui/button'
 
 const MAX_LENGTH = 2000
 
@@ -35,10 +34,10 @@ export function Composer({
   }
 
   return (
-    <div className="shrink-0 border-t border-border px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:px-6">
+    <div className="shrink-0 border-t border-zinc-800/60 bg-[#0c0c0e] px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:px-5">
       <div className="mx-auto max-w-3xl">
         {sendError && (
-          <p role="alert" className="mb-2 flex items-start gap-2 text-xs text-destructive">
+          <p role="alert" className="mb-2 flex items-start gap-2 text-xs text-red-400">
             <CircleAlert className="mt-px size-3.5 shrink-0" aria-hidden="true" />
             {sendError}
           </p>
@@ -48,7 +47,7 @@ export function Composer({
             event.preventDefault()
             submit()
           }}
-          className="flex items-end gap-2 rounded-xl border border-input bg-card p-1.5 pl-3.5 transition-colors focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/25"
+          className="flex items-end gap-2 rounded-xl border border-zinc-800 bg-zinc-900/70 p-1.5 pl-4 transition-colors focus-within:border-zinc-600 focus-within:ring-1 focus-within:ring-zinc-600/40"
         >
           <label htmlFor="message-input" className="sr-only">
             {`Message ${recipientUsername}`}
@@ -61,16 +60,21 @@ export function Composer({
             maxLength={MAX_LENGTH}
             onChange={(event) => setDraft(event.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={`Message ${recipientUsername}`}
-            className="max-h-40 min-h-8 flex-1 resize-none bg-transparent py-1.5 text-sm leading-5 text-foreground outline-none [field-sizing:content] placeholder:text-muted-foreground"
+            placeholder={`Message ${recipientUsername}…`}
+            className="max-h-40 min-h-8 flex-1 resize-none bg-transparent py-1.5 text-sm leading-5 text-zinc-100 outline-none [field-sizing:content] placeholder:text-zinc-500"
           />
-          <Button type="submit" size="icon" disabled={!canSend} aria-label="Send message" className="size-8 rounded-lg">
-            <SendHorizontal aria-hidden="true" />
-          </Button>
+          <button
+            type="submit"
+            disabled={!canSend}
+            aria-label="Send message"
+            className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white text-zinc-950 transition-all hover:bg-zinc-200 active:bg-zinc-300 disabled:pointer-events-none disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+          >
+            <SendHorizontal className="size-4" aria-hidden="true" />
+          </button>
         </form>
-        <p className="mt-1.5 hidden px-1 text-[11px] text-muted-foreground sm:block">
-          <kbd className="font-sans font-medium text-foreground/80">Enter</kbd> to send ·{' '}
-          <kbd className="font-sans font-medium text-foreground/80">Shift + Enter</kbd> for a new line
+        <p className="mt-1.5 hidden px-1 text-[11px] text-zinc-600 sm:block">
+          <kbd className="font-sans font-medium text-zinc-500">Enter</kbd> to send ·{' '}
+          <kbd className="font-sans font-medium text-zinc-500">Shift + Enter</kbd> for a new line
         </p>
       </div>
     </div>

@@ -7,14 +7,14 @@ export function FormAlert({ tone, children }: { tone: 'error' | 'success'; child
     <div
       role={tone === 'error' ? 'alert' : 'status'}
       className={cn(
-        'flex items-start gap-2.5 rounded-lg border px-3 py-2.5 text-sm',
+        'flex items-start gap-2.5 rounded-xl border px-3.5 py-2.5 text-xs leading-relaxed',
         tone === 'error'
-          ? 'border-destructive/30 bg-destructive/10 text-destructive'
-          : 'border-primary/30 bg-primary/10 text-primary',
+          ? 'border-red-900/50 bg-red-950/40 text-red-300'
+          : 'border-emerald-900/50 bg-emerald-950/40 text-emerald-300',
       )}
     >
       <Icon className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-      <div className="leading-relaxed">{children}</div>
+      <div>{children}</div>
     </div>
   )
 }

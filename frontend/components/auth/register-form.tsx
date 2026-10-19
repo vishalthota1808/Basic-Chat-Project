@@ -5,9 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { FormAlert } from '@/components/auth/form-alert'
 import { PasswordField, TextField } from '@/components/auth/form-field'
-import { Button, buttonVariants } from '@/components/ui/button'
 import { authService } from '@/lib/services'
-import { cn } from '@/lib/utils'
 import { type FieldErrors, errorMessage, validateRegistration } from '@/lib/validation'
 
 type Field = 'username' | 'password' | 'confirmPassword'
@@ -45,11 +43,14 @@ export function RegisterForm() {
     return (
       <div className="flex flex-col gap-4">
         <FormAlert tone="success">
-          Account <span className="font-semibold">{createdUsername}</span> created. You can now sign in.
+          Account <span className="font-semibold text-white">{createdUsername}</span> created. You can now sign in.
         </FormAlert>
-        <Link href="/login" className={cn(buttonVariants({ size: 'lg' }), 'h-10 w-full')}>
+        <Link
+          href="/login"
+          className="mt-2 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-white text-sm font-semibold text-zinc-950 transition-all hover:bg-zinc-200 active:bg-zinc-300"
+        >
           Continue to sign in
-          <ArrowRight aria-hidden="true" />
+          <ArrowRight className="size-4" aria-hidden="true" />
         </Link>
       </div>
     )
@@ -62,6 +63,7 @@ export function RegisterForm() {
       <TextField
         label="Username"
         name="username"
+        placeholder="your_username"
         autoComplete="username"
         autoCapitalize="none"
         spellCheck={false}
@@ -73,6 +75,7 @@ export function RegisterForm() {
       <PasswordField
         label="Password"
         name="password"
+        placeholder="••••••••"
         autoComplete="new-password"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
@@ -84,6 +87,7 @@ export function RegisterForm() {
       <PasswordField
         label="Confirm password"
         name="confirmPassword"
+        placeholder="••••••••"
         autoComplete="new-password"
         value={confirmPassword}
         onChange={(event) => setConfirmPassword(event.target.value)}
@@ -93,10 +97,17 @@ export function RegisterForm() {
         onVisibleChange={setPasswordsVisible}
       />
 
-      <Button type="submit" size="lg" className="mt-1 h-10 w-full" disabled={isSubmitting}>
-        {isSubmitting && <Loader2 className="animate-spin" aria-hidden="true" />}
-        {isSubmitting ? 'Creating account…' : 'Create account'}
-      </Button>
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="mt-2 flex h-11 w-full items-center justify-center rounded-xl bg-white text-sm font-semibold text-zinc-950 transition-all hover:bg-zinc-200 active:bg-zinc-300 disabled:pointer-events-none disabled:opacity-50"
+      >
+        {isSubmitting ? (
+          <Loader2 className="size-4 animate-spin text-zinc-950" aria-hidden="true" />
+        ) : (
+          'Create account'
+        )}
+      </button>
     </form>
   )
 }

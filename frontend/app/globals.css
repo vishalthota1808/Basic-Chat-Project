@@ -35,28 +35,28 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Hush is a dark-only interface: cool graphite surfaces with a single mint accent. */
+/* Whispr dark-only theme inspired by Vercel & Cursor design systems: pure monochrome contrasts and subtle zinc borders */
 :root {
   color-scheme: dark;
-  --background: oklch(0.155 0.004 250);
-  --foreground: oklch(0.94 0.004 250);
-  --card: oklch(0.185 0.005 250);
-  --card-foreground: oklch(0.94 0.004 250);
-  --popover: oklch(0.2 0.005 250);
-  --popover-foreground: oklch(0.94 0.004 250);
-  --primary: oklch(0.83 0.1 168);
-  --primary-foreground: oklch(0.2 0.03 168);
-  --secondary: oklch(0.235 0.006 250);
-  --secondary-foreground: oklch(0.92 0.004 250);
-  --muted: oklch(0.215 0.005 250);
-  --muted-foreground: oklch(0.68 0.01 250);
-  --accent: oklch(0.245 0.007 250);
-  --accent-foreground: oklch(0.96 0.004 250);
-  --destructive: oklch(0.7 0.17 25);
-  --success: oklch(0.83 0.1 168);
-  --border: oklch(0.27 0.006 250);
-  --input: oklch(0.3 0.007 250);
-  --ring: oklch(0.83 0.1 168);
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --card: #111113;
+  --card-foreground: #f4f4f5;
+  --popover: #141417;
+  --popover-foreground: #f4f4f5;
+  --primary: #ffffff;
+  --primary-foreground: #09090b;
+  --secondary: #18181b;
+  --secondary-foreground: #f4f4f5;
+  --muted: #1c1c20;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --success: #22c55e;
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #71717a;
   --radius: 0.75rem;
 }
 

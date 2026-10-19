@@ -23,11 +23,17 @@ export function UserList({
 }) {
   if (isLoading) {
     return (
-      <div role="status" aria-label="Loading people" className="flex flex-col gap-1">
+      <div role="status" aria-label="Loading people" className="flex flex-col gap-0.5 px-2">
         {Array.from({ length: 6 }, (_, index) => (
-          <div key={index} className="flex items-center gap-3 px-3 py-2.5">
-            <span className="size-9 animate-pulse rounded-full bg-muted" />
-            <span className="h-3 animate-pulse rounded bg-muted" style={{ width: `${40 + ((index * 17) % 35)}%` }} />
+          <div key={index} className="flex items-center gap-3 rounded-xl px-3 py-2.5">
+            <span className="size-10 animate-pulse rounded-full bg-zinc-800" />
+            <div className="flex flex-1 flex-col gap-1.5">
+              <span
+                className="h-2.5 animate-pulse rounded bg-zinc-800"
+                style={{ width: `${40 + ((index * 17) % 35)}%` }}
+              />
+              <span className="h-2 w-24 animate-pulse rounded bg-zinc-800/60" />
+            </div>
           </div>
         ))}
       </div>
@@ -56,7 +62,7 @@ export function UserList({
   }
 
   return (
-    <ul className="flex flex-col gap-0.5">
+    <ul className="flex flex-col gap-0.5 px-2">
       {users.map((user) => {
         const isSelected = user.id === selectedUserId
         return (
@@ -66,15 +72,17 @@ export function UserList({
               onClick={() => onSelectUser(user)}
               aria-current={isSelected ? 'true' : undefined}
               className={cn(
-                'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors outline-none focus-visible:ring-3 focus-visible:ring-ring/40',
+                'flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-zinc-600',
                 isSelected
-                  ? 'bg-accent text-accent-foreground'
-                  : 'text-foreground/85 hover:bg-accent/60 hover:text-foreground active:bg-accent',
+                  ? 'bg-zinc-800/80 text-zinc-100'
+                  : 'text-zinc-300 hover:bg-zinc-800/50 hover:text-zinc-100 active:bg-zinc-800/70',
               )}
             >
-              <UserAvatar username={user.username} />
-              <span className="min-w-0 flex-1 truncate text-sm font-medium">{user.username}</span>
-              {isSelected && <span aria-hidden="true" className="size-1.5 rounded-full bg-primary" />}
+              <UserAvatar username={user.username} statusDot />
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-medium leading-snug">{user.username}</p>
+                <p className="truncate text-[11px] text-zinc-500 leading-snug">Click to start chatting</p>
+              </div>
             </button>
           </li>
         )

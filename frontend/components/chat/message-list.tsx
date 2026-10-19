@@ -38,7 +38,7 @@ export function MessageList({
         {[48, 32, 60, 40].map((width, index) => (
           <span
             key={index}
-            className={cn('h-9 animate-pulse rounded-2xl bg-muted', index % 2 === 1 && 'self-end')}
+            className={cn('h-9 animate-pulse rounded-2xl bg-zinc-800', index % 2 === 1 && 'self-end')}
             style={{ width: `${width}%` }}
           />
         ))}
@@ -79,7 +79,7 @@ export function MessageList({
         aria-label="Messages"
         aria-live="polite"
         tabIndex={0}
-        className="h-full overflow-y-auto px-3 py-4 outline-none focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-inset md:px-6"
+        className="h-full overflow-y-auto px-3 py-5 outline-none focus-visible:ring-2 focus-visible:ring-zinc-700 focus-visible:ring-inset md:px-5"
       >
         <ol className="mx-auto flex max-w-3xl flex-col">
           {messages.map((message, index) => {
@@ -100,8 +100,10 @@ export function MessageList({
             return (
               <Fragment key={message.id}>
                 {startsNewDay && (
-                  <li className="my-4 flex justify-center first:mt-0">
-                    <span className="text-[11px] font-medium text-muted-foreground">{formatDayLabel(date)}</span>
+                  <li className="my-5 flex justify-center first:mt-0">
+                    <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-0.5 text-[11px] font-medium text-zinc-500">
+                      {formatDayLabel(date)}
+                    </span>
                   </li>
                 )}
                 <MessageBubble
@@ -109,6 +111,7 @@ export function MessageList({
                   isOwn={message.senderId === selfId}
                   continuesGroup={continuesGroup}
                   endsGroup={endsGroup}
+                  otherUsername={otherUsername}
                 />
               </Fragment>
             )
@@ -120,7 +123,7 @@ export function MessageList({
         <button
           type="button"
           onClick={() => scrollToBottom('smooth')}
-          className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-border bg-popover px-3 py-1.5 text-xs font-medium text-popover-foreground transition-colors hover:bg-accent focus-visible:ring-3 focus-visible:ring-ring/40 focus-visible:outline-none"
+          className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-zinc-700 bg-zinc-900 px-3.5 py-1.5 text-xs font-medium text-zinc-200 shadow-lg transition-colors hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-600"
         >
           <ArrowDown className="size-3.5" aria-hidden="true" />
           New messages
