@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Logo } from '@/components/brand/logo'
-import { PreviewModeBadge } from '@/components/preview-mode-badge'
 
 export function AuthShell({
   title,
@@ -34,7 +33,6 @@ export function AuthShell({
         >
           <Logo />
         </Link>
-        <PreviewModeBadge />
       </header>
 
       {/* Centered Modal Card */}

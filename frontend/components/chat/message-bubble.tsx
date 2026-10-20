@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils'
 import { UserAvatar } from '@/components/user-avatar'
 
 const STATUS_LABEL: Record<MessageStatus, string | null> = {
-  preview: 'Local preview · not delivered',
   sending: 'Sending…',
   sent: null,
   failed: 'Not sent',
@@ -56,8 +55,6 @@ export function MessageBubble({
                   message.status === 'sending' && 'opacity-60',
                   message.status === 'failed' &&
                     'bg-transparent text-zinc-100 ring-1 ring-red-500/50 ring-inset',
-                  message.status === 'preview' &&
-                    'bg-transparent text-zinc-300 ring-1 ring-zinc-600 ring-inset',
                 ]
               : [
                   'bg-zinc-800 text-zinc-100',

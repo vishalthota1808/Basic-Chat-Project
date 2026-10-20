@@ -20,12 +20,11 @@ export interface AuthSession {
 }
 
 /**
- * - `preview`: added to local UI state only (mock mode). NOT delivered to anyone.
  * - `sending`: handed to the transport, waiting for confirmation.
  * - `sent`:    accepted by the backend.
  * - `failed`:  could not be sent.
  */
-export type MessageStatus = 'preview' | 'sending' | 'sent' | 'failed'
+export type MessageStatus = 'sending' | 'sent' | 'failed'
 
 export interface ChatMessage {
   id: string

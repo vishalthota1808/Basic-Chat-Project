@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FormAlert } from '@/components/auth/form-alert'
 import { PasswordField, TextField } from '@/components/auth/form-field'
-import { MOCK_PASSWORD } from '@/lib/mock/mock-data'
-import { authService, isMockAuthMode } from '@/lib/services'
+import { authService } from '@/lib/services'
 import { saveSession } from '@/lib/session'
 import { type FieldErrors, errorMessage, validateLogin } from '@/lib/validation'
 
@@ -92,13 +91,6 @@ export function LoginForm() {
           'Continue'
         )}
       </button>
-
-      {isMockAuthMode && (
-        <p className="mt-1 text-center text-xs leading-relaxed text-zinc-500">
-          Mock mode: any username works with password{' '}
-          <code className="rounded bg-zinc-800 px-1 py-0.5 font-mono text-zinc-300">{MOCK_PASSWORD}</code>.
-        </p>
-      )}
     </form>
   )
 }

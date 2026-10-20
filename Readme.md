@@ -74,11 +74,7 @@ Create `frontend/.env.local`:
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:3000
 NEXT_PUBLIC_WS_URL=ws://localhost:3000/ws
-NEXT_PUBLIC_USE_MOCK_AUTH=false
-NEXT_PUBLIC_USE_MOCK_CHAT=false
 ```
-
-Set either mock flag to `true` to run the UI without a backend.
 
 ## Run
 

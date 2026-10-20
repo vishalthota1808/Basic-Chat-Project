@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono'
 export const metadata: Metadata = {
   title: {
     default: 'Whispr — Private messaging',
-    template: '%s · Whispr',
+    template: '%s · Whispr', //this ensures separate titles for each page like chat.whispr login.whispr register.whispr
   },
   description: 'A focused, real-time, one-to-one private messaging app.',
   generator: 'v0.app',
